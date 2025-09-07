@@ -19,14 +19,19 @@ class Program
             while (guess != magicNumber && attempts < maxAttempts)
             {
                 Console.Write("What is your guess?");
-                guess = int.Parse(Console.ReadLine());
+                string line = Console.ReadLine();
+                if (!int.TryParse(line, out guess))
+                {
+                    Console.WriteLine("Please enter a valid number.");
+                    continue;
+                }
                 attempts++;
 
-                if (guess < magicNumber)
+                if (guess < magicNumber && attempts < maxAttempts)
                 {
                     Console.WriteLine("Higher");
                 }
-                else if (guess > magicNumber)
+                else if (guess > magicNumber && attempts < maxAttempts)
                 {
                     Console.WriteLine("Lower.");
                 }
@@ -35,6 +40,10 @@ class Program
                     Console.WriteLine($"Your guessed it in {attempts} attempts.");
                 }
 
+            }
+            if(guess != magicNumber)
+            {
+                Console.WriteLine($"Sorry, you've used all your attempts. The number was {magicNumber}.");
             }
             Console.Write("Do you want to play again? (yes/no): ");
             playAgain= Console.ReadLine().ToLower();
