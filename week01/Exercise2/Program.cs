@@ -20,12 +20,39 @@ class Program
         { letter = "D"; }
         else
         { letter = "F"; }
-
-
-    }
-
+        
     string sing = "";
     int lastDigit = grade % 10;
-    if{letter != "F"}
+
+    if (letter != "F")
+    {
+      if(lastDigit >=7)
+
+      { sing ="+";}
+      else if (lastDigit < 3)
+       {sing = "-";}
+
+    }
+    
+if (letter == "A" && sing == "+")
+{
+    sing = "";
+}
+
+Console.WriteLine($"Your letter grade is: {letter}{sing}");
+if (grade >= 70)
+{
+    Console.WriteLine("Congratulations, you passed the course!");
+}
+else
+{
+    Console.WriteLine("Better luck next time! keep trying!");
+}
+    }
     
 }
+   
+
+ 
+ 
+    
