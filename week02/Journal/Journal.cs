@@ -1,21 +1,23 @@
 using System;
-using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 namespace JournalApp
 {
     public class Journal
     {
         private List<Entry> entries;
+
         public Journal()
         {
             entries = new List<Entry>();
         }
+
         public void AddEntry(Entry e)
         {
             if (e == null) throw new ArgumentNullException(nameof(e), "Entry cannot be null");
             entries.Add(e);
-
         }
+
         public IReadOnlyList<Entry> GetEntries()
         {
             return entries.AsReadOnly();
@@ -25,9 +27,10 @@ namespace JournalApp
         {
             if (entries.Count == 0)
             {
-                Console.WriteLine("the diary is empty");
+                Console.WriteLine("The diary is empty");
                 return;
             }
+
             Console.WriteLine("=== Diary Entries ===");
             foreach (var e in entries)
             {
@@ -35,17 +38,23 @@ namespace JournalApp
             }
             Console.WriteLine("=====================");
         }
-        public void Crear()
+
+      
+        public void ClearEntries()
         {
             entries.Clear();
         }
-            
-            public void RepleaceEntries(IEnumerable<Entry> newEntries)
+
+      
+        public void Crear()
+        {
+            ClearEntries();
+        }
+
+      
+        public void ReplaceEntries(IEnumerable<Entry> newEntries)
         {
             entries = new List<Entry>(newEntries ?? new List<Entry>());
-
         }
-        
-        
     }
 }
