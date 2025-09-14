@@ -46,7 +46,7 @@ namespace JournalApp
         }
 
       
-        public void Crear()
+        public void ClearAll()
         {
             ClearEntries();
         }
